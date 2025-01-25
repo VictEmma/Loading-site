@@ -1,0 +1,202 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Empêcher le scroll du body */
+html, body {
+    height: 100%;
+    overflow: auto;
+    scroll-behavior: smooth;
+}
+
+/* Loader centré */
+.loader-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Navigation header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    transition: color 0.3s ease;
+    font-family: "Jersey 15", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+}
+
+p {
+    color: white;
+    font-family: "Signika Negative", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-align: left;
+    line-height: 1.5;
+}
+.copyright {
+    text-align: center;
+}
+img{
+    border-radius: 10px;
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Conteneur des sections, gérant le scroll */
+.sections {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    position: relative;
+}
+
+
+
+/* Sections stylisées */
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap:40px;
+    transition: transform 0.8s ease-in-out;
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+    scroll-snap-align: start;
+    border-top: 1px solid white;
+    background: #222;
+    padding: 100px;
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+}
+
+/* Empêcher l'effet de hover qui applique une transformation */
+.section:hover {
+    transform: none;
+}
+
+/* Footer stylisé */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background: rgba(34, 34, 34, 0.9);
+    color: white;
+    font-size: 18px;
+    z-index: 1000;
+}
+
+/* Correction pour éviter que le footer ajoute un scroll supplémentaire */
+.section:last-child {
+    padding-bottom: 80px;
+}
+/* Cacher la barre de scroll */
+.sections {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none; /* Pour Firefox */
+    -ms-overflow-style: none; /* Pour IE et Edge */
+}
+.sections::-webkit-scrollbar {
+    display: none; /* Pour Chrome, Safari */
+}
+
+/* Styliser les boutons de navigation */
+.nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-dots button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.nav-dots button.active {
+    background: white;
+}
+/* Navigation avec des ronds indicateurs */
+.nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.nav-dots button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.nav-dots button.active {
+    background: white;
+}

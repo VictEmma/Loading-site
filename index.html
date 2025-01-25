@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Stylisé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jersey+15&family=Signika+Negative:wght@406&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+</head>
+<body>
+
+    <!-- Page de chargement -->
+    <div class="loader-wrapper" id="loader-wrapper">
+        <div id="loading-animation"></div>
+    </div>
+
+    <!-- Header moderne -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#section1">Pourquoi ce choix ?</a></li>
+                <li><a href="#section2">Recherches et inspirations</a></li>
+                <li><a href="#section3">Storyboard</a></li>
+                <li><a href="#section4">Choix et justifications techniques et artistiques</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sections stylisées en plein écran -->
+    <div class="nav-dots">
+        <button onclick="scrollToSection(0)" class="active"></button>
+        <button onclick="scrollToSection(1)"></button>
+        <button onclick="scrollToSection(2)"></button>
+        <button onclick="scrollToSection(3)"></button>
+    </div>
+    <div class="sections">
+        <section id="section1" class="section">
+            <div>
+                <h1>Pourquoi ce choix ?</h1>
+            <p>J’ai choisi mon logo de portfolio pour de donner du mouvement à mon identité visuelle afin de peaufiner ma vision par rapport à elle.</p>
+            
+            </div>
+            <div>
+                <img src="img/logo_base.svg" alt="Logo">
+            </div>
+        </section>
+        <section id="section2" class="section">
+            <div>
+                <h1>Recherches et inspirations</h1>
+            <p>J’ai cherché pas mal d’animations de tout type en ne me limitant pas aux animations de chargement car toute inspiration est bonne à prendre. Puis je me suis souvenu de l’animation de pixar. 
+                Je suis tombé sur pas mal d’idées communes et d’autres moins et je me suis rendu compte au fil des recherches que créer un mouvement légèrement complexe comme courir était un résultat récurrent que je trouvais dommage quand il se retrouvait accompagné d’une barre de chargement qui prédomine. Je me suis donc dit qu’un seul élément animé sans barre de chargement était une bonne idée. Je voulais un truc avec un sens profond pas si évident mais limpide avec un peu d’explications.
+                </p>
+            </div>
+                <div>
+                    <img src="img/pix_jump.gif" alt="Animation Pixar">
+                    <img src="img/load_base.gif" alt="Animation Exemple">
+                </div>
+        </section>
+        <section id="section3" class="section">
+            <div>
+                <h1>Storyboard</h1>
+            <p>Je voulais une animation qui surprend, comme mon logo est composé de barres, jouer seulement sur l’échelle ne me semblait pas très recherché et un peu trop vu et revu je voulais quelque chose de surprenant. J'ai donc opté pour un des mouvements rapides et impactants comme des sauts et un écrasement. Enfin pour l'effet de boucle je fais revenir la barre la plus mouvante à son état initial en opacité 0.</p>
+            </div>
+            <div>
+                <img src="img/storyboard_load.jpg" alt="Animation Exemple">
+            </div>
+        </section>
+        <section id="section4" class="section">
+            <div>
+                <h1>Choix et justifications techniques et artistiques</h1>
+                <p>J'ai choisi de faire une animation de ce type pour représenter l'acharnement qu'on doit avoir pour réaliser nos rêves. Pourquoi l'acharnement ? <br> Parce que le nom rattaché à mon logo est Dreamer. Ce chargement montre une succession d'étape avant d'atteindre le but souhaité atteindre la place que nous rêvons mais en essayant de l'atteindre nous pouvons nous faire écraser, mais nous pouvons toujours réessayer.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer moderne -->
+    <footer>
+        <p class="copyright">&copy; Ndayishimiye Victor Emmanuel. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll('.section');
+            const dots = document.querySelectorAll('.nav-dots button');
+            
+            document.querySelectorAll('nav ul li a').forEach((link, index) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    scrollToSection(index);
+                });
+            });
+    
+            function scrollToSection(index) {
+                sections[index].scrollIntoView({ behavior: 'smooth' });
+                updateActiveDot(index);
+            }
+    
+            function updateActiveDot(index) {
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+            }
+    
+            document.querySelector('.sections').addEventListener('scroll', () => {
+                let scrollPosition = document.querySelector('.sections').scrollTop;
+                let sectionHeight = window.innerHeight;
+                let currentIndex = Math.round(scrollPosition / sectionHeight);
+                updateActiveDot(currentIndex);
+            });
+    
+            // Charger l'animation de chargement (lecture unique)
+            const loadingAnimation = lottie.loadAnimation({
+                container: document.getElementById('loading-animation'), 
+                renderer: 'svg', 
+                loop: false,  
+                autoplay: true,  
+                path: 'animations/animation_test.json'
+            });
+    
+            // Lorsque l'animation est terminée, masquer l'écran de chargement
+            loadingAnimation.addEventListener('complete', function() {
+                document.getElementById('loader-wrapper').style.display = 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>
